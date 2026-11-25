@@ -1,0 +1,252 @@
+{
+  "title": "The Night of the Millennium",
+  "logline": "A fictional family laughs, eats and counts down together in their home on the night the Millennium began.",
+  "language": "am",
+  "style_block": "hand-painted storybook illustration, warm amber lantern light, soft film grain, rich earthy palette of ochre, terracotta and deep green, gentle painterly brush texture, cosy Ethiopian family home around the year 2000, subject centred in frame",
+  "characters": [
+    {
+      "id": "grandmother",
+      "name": "Ayat",
+      "description": "an elderly Ethiopian grandmother with silver hair under a white cotton netela shawl with a green border, kind lined face, warm smile"
+    },
+    {
+      "id": "mother",
+      "name": "Almaz",
+      "description": "an Ethiopian woman in her thirties with braided hair, wearing a white habesha dress with embroidered gold trim"
+    },
+    {
+      "id": "father",
+      "name": "Bekele",
+      "description": "an Ethiopian man in his late thirties with short hair and a trimmed moustache, wearing a cream shirt and brown trousers"
+    },
+    {
+      "id": "uncle",
+      "name": "Dawit",
+      "description": "a cheerful tall Ethiopian man in his forties with round glasses and a red knitted sweater"
+    },
+    {
+      "id": "girl",
+      "name": "Selam",
+      "description": "an eight year old Ethiopian girl with two puffs of curly hair tied with yellow ribbons, wearing a yellow dress"
+    },
+    {
+      "id": "boy",
+      "name": "Yonas",
+      "description": "a six year old Ethiopian boy with short curly hair wearing a blue shirt and shorts"
+    }
+  ],
+  "voice": {
+    "voice_name": "Kore",
+    "style": "Speak in Amharic, in a calm, warm, unhurried voice, like a grown child remembering a happy night"
+  },
+  "music": {
+    "caption": "gentle warm nostalgic instrumental, soft krar lyre and kirar plucks, mellow piano, light hand percussion, pentatonic Ethiopian tizita-inspired melody, no lead vocals, quiet texture that leaves room for a narrator",
+    "bpm": 72,
+    "key": "A minor",
+    "duration_s": 75,
+    "instrumental": true,
+    "seed": 2000,
+    "cues": [
+      {
+        "at_shot": "S01",
+        "note": "soft entrance, plucked krar alone"
+      },
+      {
+        "at_shot": "S05",
+        "note": "light percussion joins, warmer and more playful"
+      },
+      {
+        "at_shot": "S08",
+        "note": "swell at the fireworks"
+      },
+      {
+        "at_shot": "S10",
+        "note": "theme returns quietly, fades out under the end card"
+      }
+    ]
+  },
+  "shots": [
+    {
+      "id": "S01",
+      "reason": "Establish where and when: a house glowing with light on a special night.",
+      "shot_size": "extreme_wide",
+      "min_duration_s": 7,
+      "image_prompt": "a single-storey family home with a courtyard at dusk, strings of warm lights, lit windows, paper lanterns, deep blue sky with first stars",
+      "motion_prompt": "the camera pushes in slowly, lantern lights flicker softly",
+      "camera": "push_in",
+      "seed": 101,
+      "characters": [],
+      "narration": {
+        "text_native": "ያ ምሽት ሚሊኒየም ነበር። የቤታችን ግቢ በብርሃን ተሞልቶ ነበር።",
+        "text_en": "That night was the Millennium. Our compound was full of light."
+      }
+    },
+    {
+      "id": "S02",
+      "reason": "Introduce grandmother and the coffee ceremony, the heart of an Ethiopian home.",
+      "shot_size": "medium",
+      "min_duration_s": 7,
+      "image_prompt": "{grandmother} sitting on a low stool pouring coffee from a clay jebena, steam rising, small cups on a tray, fresh grass on the floor",
+      "motion_prompt": "steam rises gently, the camera holds steady with a slight push in",
+      "camera": "push_in",
+      "seed": 102,
+      "characters": [
+        "grandmother"
+      ],
+      "narration": {
+        "text_native": "አያቴ በጀበና ቡና ሲያፈሉ ጠረኑ ቤቱን ሞላው።",
+        "text_en": "As Grandmother brewed coffee in the jebena, its smell filled the house."
+      }
+    },
+    {
+      "id": "S03",
+      "reason": "Show care and abundance: the food prepared for the whole family.",
+      "shot_size": "medium",
+      "min_duration_s": 7,
+      "image_prompt": "{mother} arranging a large round table with injera, doro wat and bowls of stew, candlelight",
+      "motion_prompt": "the camera pans slowly to the right across the table, candle flames flicker",
+      "camera": "pan_right",
+      "seed": 103,
+      "characters": [
+        "mother"
+      ],
+      "narration": {
+        "text_native": "እናቴ ለበዓሉ ልዩ ምግብ ደረደረች።",
+        "text_en": "Mother laid out a special meal for the celebration."
+      }
+    },
+    {
+      "id": "S04",
+      "reason": "Bring in joy and energy through the children.",
+      "shot_size": "wide",
+      "min_duration_s": 7,
+      "image_prompt": "{girl} and {boy} running and laughing in a lantern-lit courtyard, arms open",
+      "motion_prompt": "the children run forward, the camera pans gently left, lanterns sway",
+      "camera": "pan_left",
+      "seed": 104,
+      "characters": [
+        "girl",
+        "boy"
+      ],
+      "narration": {
+        "text_native": "ልጆች በግቢው ውስጥ እየሮጡ ይስቁ ነበር።",
+        "text_en": "The children ran around the courtyard, laughing."
+      }
+    },
+    {
+      "id": "S05",
+      "reason": "The joking and laughter the story is about, as the whole family reacts to Uncle.",
+      "shot_size": "medium",
+      "min_duration_s": 7,
+      "image_prompt": "{uncle} telling a joke with a wide gesture while {father} and {grandmother} laugh heartily in a warm living room",
+      "motion_prompt": "the camera pushes in gently, people laugh and shake their shoulders",
+      "camera": "push_in",
+      "seed": 105,
+      "characters": [
+        "uncle",
+        "father",
+        "grandmother"
+      ],
+      "narration": {
+        "text_native": "አጎቴ ቀልድ ሲያወራ ሁሉም በሳቅ ፈነዳ።",
+        "text_en": "When Uncle told a joke, everyone burst out laughing."
+      }
+    },
+    {
+      "id": "S06",
+      "reason": "A quiet beat before the countdown to vary the pacing.",
+      "shot_size": "close",
+      "min_duration_s": 6,
+      "image_prompt": "{father} lighting a candle with a match, warm glow on his face, family silhouettes behind",
+      "motion_prompt": "the match flame lights the candle, camera holds still",
+      "camera": "static",
+      "seed": 106,
+      "characters": [
+        "father"
+      ],
+      "narration": {
+        "text_native": "አባቴ ሻማ አበራ፤ ሁሉም ዝም ብሎ ተመለከተ።",
+        "text_en": "Father lit a candle, and everyone watched in silence."
+      }
+    },
+    {
+      "id": "S07",
+      "reason": "The emotional peak: the family embraces as the new era begins.",
+      "shot_size": "medium_close",
+      "min_duration_s": 7,
+      "image_prompt": "{mother}, {father}, {girl}, {boy} and {grandmother} hugging together in a warm embrace, joyful faces",
+      "motion_prompt": "the camera pushes in slowly, gentle swaying embrace",
+      "camera": "push_in",
+      "seed": 107,
+      "characters": [
+        "mother",
+        "father",
+        "girl",
+        "boy",
+        "grandmother"
+      ],
+      "narration": {
+        "text_native": "አዲሱ ዘመን ሲገባ ሁላችንም ተቃቀፍን።",
+        "text_en": "As the new era arrived, we all embraced."
+      }
+    },
+    {
+      "id": "S08",
+      "reason": "Release and celebration: fireworks mark the turn of the Millennium.",
+      "shot_size": "extreme_wide",
+      "min_duration_s": 7,
+      "image_prompt": "colourful fireworks bursting over village rooftops at night, silhouettes of people on a rooftop looking up",
+      "motion_prompt": "fireworks burst and fade, the camera pulls back slowly",
+      "camera": "pull_out",
+      "seed": 108,
+      "characters": [],
+      "narration": {
+        "text_native": "ርችት ሰማዩን አበራው።",
+        "text_en": "Fireworks lit up the sky."
+      }
+    },
+    {
+      "id": "S09",
+      "reason": "The togetherness the story is about: the whole family in one frame.",
+      "shot_size": "wide",
+      "min_duration_s": 7,
+      "image_prompt": "{grandmother}, {mother}, {father}, {uncle}, {girl} and {boy} sitting together around a low table sharing food and smiling",
+      "motion_prompt": "the camera pulls back slowly, everyone smiles and talks",
+      "camera": "pull_out",
+      "seed": 109,
+      "characters": [
+        "grandmother",
+        "mother",
+        "father",
+        "uncle",
+        "girl",
+        "boy"
+      ],
+      "narration": {
+        "text_native": "ያን ምሽት ሁላችንም አብረን ነበርን።",
+        "text_en": "That night, we were all together."
+      }
+    },
+    {
+      "id": "S10",
+      "reason": "Return to grandmother for a lasting, personal ending.",
+      "shot_size": "close",
+      "min_duration_s": 7,
+      "image_prompt": "{grandmother} laughing warmly, close-up of her face with soft golden light, glowing eyes",
+      "motion_prompt": "the camera pushes in slowly, soft light shimmers",
+      "camera": "push_in",
+      "seed": 110,
+      "characters": [
+        "grandmother"
+      ],
+      "narration": {
+        "text_native": "ዛሬም ያ ሳቅ በልባችን ውስጥ ይሰማል።",
+        "text_en": "Even today, that laughter still echoes in our hearts."
+      }
+    }
+  ],
+  "end_card": {
+    "text": "Made with AI",
+    "duration_s": 3
+  }
+}

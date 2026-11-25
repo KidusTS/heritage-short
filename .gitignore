@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.pyc
+outputs/final/seg_*
+outputs/final/list_*
+outputs/final/silent_*

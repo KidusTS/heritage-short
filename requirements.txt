@@ -1,0 +1,5 @@
+jsonschema
+requests
+imageio-ffmpeg
+pillow
+python-dotenv
