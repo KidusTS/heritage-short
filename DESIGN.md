@@ -21,3 +21,7 @@ Characters are fictional, in a hand-painted illustration style. This avoids real
 | ---------------------- | --------------- | ----------------------------- | -------------------------- |
 | Father, 62             | At home         | They said it was funny        | It needs more lively video |
 | Brother, 30            | At home         | It was creative and nostalgic | Perfect                    |
+
+# Amharic Authenticity
+
+The Amharic audio was surprisingly not bad, but it feeling AI is unavoidable, overall i am happy with the outcome. I assumed it would be much much worse.
