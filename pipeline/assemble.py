@@ -9,8 +9,8 @@ from .common import OUT, ROOT, Cache, load_storyboard, log_run, run_ffmpeg, sha,
 from .music import chosen_score
 
 ASPECTS = {
-    "vertical": {"w": 1080, "h": 1920, "crop": "crop=min(iw\\,ih*9/16):min(ih\\,iw*16/9)", "font": 10, "margin": 55},
-    "horizontal": {"w": 1920, "h": 1080, "crop": "crop=min(iw\\,ih*16/9):min(ih\\,iw*9/16)", "font": 12, "margin": 20},
+    "vertical": {"w": 1080, "h": 1920, "crop": "crop=min(iw\\,ih*9/16):min(ih\\,iw*16/9)", "font": 8, "margin": 55},
+    "horizontal": {"w": 1920, "h": 1080, "crop": "crop=min(iw\\,ih*16/9):min(ih\\,iw*9/16)", "font": 10, "margin": 20},
 }
 FPS = 24
 LEAD_IN = 0.4  # seconds of silence before each narration line

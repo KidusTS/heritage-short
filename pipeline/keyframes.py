@@ -16,7 +16,10 @@ STEPS = 8  # schnell maximum on Workers AI
 def _cloudflare(prompt: str, seed: int, model: str) -> bytes:
     acct, token = need_env("CF_ACCOUNT_ID"), need_env("CF_API_TOKEN")
     url = f"https://api.cloudflare.com/client/v4/accounts/{acct}/ai/run/{model}"
-    r = requests.post(url, json={"prompt": prompt, "steps": STEPS, "seed": seed},
+    body = {"prompt": prompt, "steps": STEPS}
+    if os.getenv("CF_SEND_SEED") == "1":  # flux-1-schnell on Workers AI rejects "seed" (HTTP 400, code 5006)
+        body["seed"] = seed
+    r = requests.post(url, json=body,
                       headers={"Authorization": f"Bearer {token}"}, timeout=120)
     r.raise_for_status()
     return base64.b64decode(r.json()["result"]["image"])

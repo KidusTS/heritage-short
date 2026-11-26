@@ -13,7 +13,7 @@ import requests
 from .common import Cache, load_storyboard, log_run, mock, need_env, retry, sha
 
 RATE = 24000  # Gemini TTS returns 24 kHz 16-bit mono PCM
-DEFAULT_MODEL = "gemini-2.5-flash-preview-tts"  # override with GEMINI_TTS_MODEL (brief names Gemini 3.8 Flash TTS)
+DEFAULT_MODEL = "gemini-3.8-flash-tts"  # override with GEMINI_TTS_MODEL. The 2.5 preview TTS free tier is capped at 10 requests/day
 
 
 def _write_wav(path, pcm: bytes):
@@ -36,8 +36,19 @@ def _gemini_tts(text: str, voice: dict, model: str) -> bytes:
     }
     r = requests.post(url, json=body, headers={"x-goog-api-key": key}, timeout=120)
     r.raise_for_status()
-    part = r.json()["candidates"][0]["content"]["parts"][0]["inlineData"]
-    return base64.b64decode(part["data"])
+    cand = r.json()["candidates"][0]
+    parts = cand.get("content", {}).get("parts") or []
+    if not parts or "inlineData" not in parts[0]:  # intermittent: HTTP 200, finishReason OTHER, no audio
+        raise RuntimeError(f"TTS returned no audio (finishReason={cand.get('finishReason')})")
+    raw = base64.b64decode(parts[0]["inlineData"]["data"])
+    if raw[:4] == b"RIFF":  # gemini-3.8 returns a complete WAV file; 2.5 returned raw 24 kHz PCM
+        import io
+
+        with wave.open(io.BytesIO(raw), "rb") as w:
+            if (w.getframerate(), w.getnchannels(), w.getsampwidth()) != (RATE, 1, 2):
+                raise RuntimeError(f"unexpected audio format {w.getframerate()} Hz, {w.getnchannels()} ch")
+            return w.readframes(w.getnframes())
+    return raw
 
 
 def _mock_tone(text: str) -> bytes:
@@ -61,7 +72,7 @@ def run(only: list[str] | None = None, force: bool = False):
             print(f"[narration] {shot['id']} cached")
             continue
         t0 = time.time()
-        pcm = _mock_tone(text) if mock() else retry(lambda: _gemini_tts(text, sb["voice"], model), what="TTS")
+        pcm = _mock_tone(text) if mock() else retry(lambda: _gemini_tts(text, sb["voice"], model), tries=6, base=5.0, what="TTS")
         _write_wav(c.path, pcm)
         c.save_meta(key, text=text)
         log_run("narration", "mock" if mock() else model, shot["id"],
