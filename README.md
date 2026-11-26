@@ -20,7 +20,7 @@ Outputs: `outputs/final/film_vertical.mp4` (9:16) and `outputs/final/film_horizo
 | `python run.py --only keyframes --shot S03` | regenerate one stage for one shot |
 | `python run.py --force` | ignore the cache |
 | `python -m pipeline.smoke` | call each provider once, log latency |
-| `MOCK=1 python run.py` | run offline with placeholders (no keys needed) |
+| `MOCK=1 python run.py` | run offline with placeholders (no keys needed); writes to `outputs_mock/` and `runs_mock.jsonl`, never to the real ones |
 | `python tools_costs.py` | summarise `runs.jsonl` for COSTS.md |
 
 No `make` is needed (not available on the author's Windows machine); `python run.py` is the single documented command. FFmpeg is bundled through the `imageio-ffmpeg` pip package, or set `FFMPEG=/path/to/ffmpeg`.

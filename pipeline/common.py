@@ -10,8 +10,10 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-OUT = ROOT / "outputs"
-RUNS = ROOT / "runs.jsonl"
+# MOCK=1 writes to separate paths so a test run can never overwrite real outputs or pollute the real log
+_MOCK = os.getenv("MOCK") == "1"
+OUT = ROOT / ("outputs_mock" if _MOCK else "outputs")
+RUNS = ROOT / ("runs_mock.jsonl" if _MOCK else "runs.jsonl")
 SCHEMA = ROOT / "schema" / "storyboard.schema.json"
 
 try:  # optional: read .env if python-dotenv is installed

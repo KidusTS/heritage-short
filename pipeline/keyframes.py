@@ -13,10 +13,10 @@ DEFAULT_MODEL = "@cf/black-forest-labs/flux-1-schnell"  # override with CF_IMAGE
 STEPS = 8  # schnell maximum on Workers AI
 
 
-def _cloudflare(prompt: str, seed: int, model: str) -> bytes:
+def _cloudflare(prompt: str, seed: int, model: str, steps: int = STEPS) -> bytes:
     acct, token = need_env("CF_ACCOUNT_ID"), need_env("CF_API_TOKEN")
     url = f"https://api.cloudflare.com/client/v4/accounts/{acct}/ai/run/{model}"
-    body = {"prompt": prompt, "steps": STEPS}
+    body = {"prompt": prompt, "steps": steps}
     if os.getenv("CF_SEND_SEED") == "1":  # flux-1-schnell on Workers AI rejects "seed" (HTTP 400, code 5006)
         body["seed"] = seed
     r = requests.post(url, json=body,

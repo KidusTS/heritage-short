@@ -4,3 +4,5 @@ __pycache__/
 outputs/final/seg_*
 outputs/final/list_*
 outputs/final/silent_*
+outputs_mock/
+runs_mock.jsonl
