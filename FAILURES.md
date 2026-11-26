@@ -36,6 +36,27 @@ Each entry: what broke, what I tried, what fixed or worked around it. Only real 
 - **Fixed:** switched the default model to `gemini-3.8-flash-tts`. It returns a full WAV file instead of raw PCM, so `_gemini_tts` now accepts both. All 10 lines were regenerated with one model so the voice is consistent. Per-minute 429s still happen and are absorbed by the retry (6 tries, 5 s base).
 - **Lesson:** read the quota table before smoke-testing, and make the smoke test one call per provider.
 
+## 7. Mock mode could overwrite real outputs (found by the clean-clone test, 26 Nov)
+
+- **Broke:** `MOCK=1 python run.py` wrote placeholders into `outputs/`, the same folder as the real narration and keyframes, and logged to the real `runs.jsonl`. In a real repo that would silently replace real work.
+- **Fixed:** in mock mode `OUT` is `outputs_mock/` and the log is `runs_mock.jsonl` (both git-ignored), chosen at import time from the `MOCK` environment variable.
+
+## 8. Kaggle notebook had no internet (ACE-Step setup, 26 Nov)
+
+- **Broke:** `curl` and `git clone` failed with "Could not resolve host", and a Python check returned `[Errno -3] Temporary failure in name resolution`. `ping` is not installed in the container, so it could not be used to test.
+- **Tried / fixed:** Kaggle turns internet off by default. Turned **Internet on** in the notebook session options and restarted the session; the clone then worked. **[YOU: confirm what you did, and whether phone verification was needed.]** Tested with `socket.gethostbyname("github.com")`.
+
+## 9. Wrong `uv` path in my first instructions (26 Nov)
+
+- **Broke:** `/root/.local/bin/uv: No such file or directory` after the installer said it was done.
+- **Fixed:** the installer printed `installing to /usr/local/bin`, so plain `uv` works. The path I had given was wrong.
+
+## 10. ACE-Step import crashed on matplotlib (26 Nov)
+
+- **Broke:** `python gen.py` failed at `import matplotlib` with `ValueError: Key backend: 'module://matplotlib_inline.backend_inline' is not a valid value`.
+- **Cause:** Kaggle sets `MPLBACKEND=module://matplotlib_inline.backend_inline` for its own Python; ACE-Step runs in a separate `uv` virtual environment without that module.
+- **Fixed:** `%env MPLBACKEND=Agg` before `uv run python gen.py`. No reinstall was needed. Generation then finished successfully on the T4 and produced 3 candidates.
+
 ## To add as they happen
 
 Quota limits (Cloudflare daily allowance, Kaggle GPU hours), Wan 2.2 out-of-memory on a T4, identity drift between shots, Amharic pronunciation errors in TTS, anything where a model in the brief has moved or been renamed.
